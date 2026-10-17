@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "lib": ["ES2022", "DOM"],
+    "outDir": "dist"
+  },
+  "include": ["src/**/*.ts", "test/**/*.ts", "demo/**/*.ts", "scripts/**/*.ts"]
+}

@@ -1,0 +1,85 @@
+{
+  "name": "rehype-chemfig",
+  "version": "0.1.0",
+  "description": "Render a documented subset of Chemfig as safe inline SVG in Markdown and HTML, without TeX.",
+  "keywords": [
+    "chemfig",
+    "chemistry",
+    "markdown",
+    "rehype-plugin",
+    "remark-plugin",
+    "svg",
+    "unified"
+  ],
+  "license": "MIT",
+  "files": [
+    "dist",
+    "assets/examples",
+    "docs/examples.md",
+    "README.md",
+    "LICENSE",
+    "CHEMFIG-COMPATIBILITY-NOTES.md"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "./dist/styles.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./core": {
+      "types": "./dist/core.d.ts",
+      "default": "./dist/core.js"
+    },
+    "./remark": {
+      "types": "./dist/remark.d.ts",
+      "default": "./dist/remark.js"
+    },
+    "./rehype": {
+      "types": "./dist/rehype.d.ts",
+      "default": "./dist/rehype.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && bun scripts/copy-css.mjs",
+    "lint": "oxlint --deny-warnings .",
+    "lint:fix": "oxlint --fix .",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "examples:build": "bun scripts/build-examples.ts",
+    "examples:check": "bun scripts/build-examples.ts --check",
+    "demo:build": "bun run build && bun demo/build.ts",
+    "demo": "bun run demo:build && bun demo/server.mjs",
+    "check": "bun run lint && bun run format:check && bun run typecheck && bun test && bun run examples:check && bun run demo:build",
+    "prepack": "bun run build"
+  },
+  "dependencies": {
+    "@types/hast": "^3.0.4",
+    "@types/mdast": "^4.0.4",
+    "@types/unist": "^3.0.3",
+    "hast-util-to-html": "^9.0.5",
+    "unified": "^11.0.5",
+    "vfile": "^6.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "esbuild": "^0.25.0",
+    "oxfmt": "^0.73.0",
+    "oxlint": "^1.88.0",
+    "rehype-parse": "^9.0.1",
+    "rehype-sanitize": "^6.0.0",
+    "rehype-stringify": "^10.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "bun@1.4.2"
+}
