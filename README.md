@@ -64,7 +64,7 @@ Try the editable drawing bench locally:
 
 ```sh
 bun install
-bun run demo  # http://localhost:4173; override with PORT=…
+bun run dev --host  # http://localhost:4173; override with PORT=…
 ```
 
 Choose an example, edit its source, and download the result as standalone SVG. Initial figures are built with the remark plugin; edits run the same pipeline in the browser, entirely locally.
@@ -284,8 +284,10 @@ Use **Bun 1.4.2** (pinned in `package.json`). Commit `bun.lock` when changing de
 ```sh
 bun install --frozen-lockfile
 bun run check           # lint, format, types, tests, example freshness, build, demo
-bun run demo            # editable drawing bench on localhost:4173
+bun run dev --host      # editable drawing bench on port 4173, exposed to the network
 ```
+
+`--host` binds to all network interfaces (also the default); use `--host 127.0.0.1` to restrict access to this machine. Set `PORT=…` to change the port. `bun run demo` remains an alias for `bun run dev`.
 
 Individual tasks:
 

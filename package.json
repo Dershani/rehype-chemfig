@@ -44,6 +44,7 @@
     "./styles.css": "./dist/styles.css"
   },
   "scripts": {
+    "dev": "bun run demo:build && bun demo/server.mjs",
     "build": "tsc -p tsconfig.build.json && bun scripts/copy-css.mjs",
     "lint": "oxlint --deny-warnings .",
     "lint:fix": "oxlint --fix .",
@@ -54,7 +55,7 @@
     "examples:build": "bun scripts/build-examples.ts",
     "examples:check": "bun scripts/build-examples.ts --check",
     "demo:build": "bun run build && bun demo/build.ts",
-    "demo": "bun run demo:build && bun demo/server.mjs",
+    "demo": "bun run dev",
     "check": "bun run lint && bun run format:check && bun run typecheck && bun test && bun run examples:check && bun run demo:build",
     "prepack": "bun run build"
   },
